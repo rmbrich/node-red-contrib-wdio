@@ -1,0 +1,191 @@
+[
+  {
+      "id": "b333aac5.8be6a8",
+      "type": "tab",
+      "label": "Flow 1",
+      "disabled": false,
+      "info": ""
+  },
+  {
+      "id": "3a964070.37941",
+      "type": "inject",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "topic": "",
+      "payload": "",
+      "payloadType": "date",
+      "repeat": "",
+      "crontab": "",
+      "once": false,
+      "onceDelay": 0.1,
+      "x": 100,
+      "y": 60,
+      "wires": [
+          [
+              "7f832ceb.d8f4c4"
+          ]
+      ]
+  },
+  {
+      "id": "7f832ceb.d8f4c4",
+      "type": "new-session",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "webdriverUri": "http://localhost:9515/",
+      "webdriverProvider": "local",
+      "webdriverBrowser": "chrome",
+      "logLevel": "error",
+      "x": 250,
+      "y": 180,
+      "wires": [
+          [
+              "6f8fbab3.1d1d94"
+          ]
+      ]
+  },
+  {
+      "id": "6f8fbab3.1d1d94",
+      "type": "navigate-to",
+      "z": "b333aac5.8be6a8",
+      "url": "https://docs.seleniumhq.org/",
+      "name": "",
+      "x": 430,
+      "y": 180,
+      "wires": [
+          [
+              "c3e7d9e7.b8aa58"
+          ]
+      ]
+  },
+  {
+      "id": "c3e7d9e7.b8aa58",
+      "type": "get-title",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "x": 240,
+      "y": 260,
+      "wires": [
+          [
+              "e95ea90a.a813d8",
+              "acc33cf3.f21a"
+          ]
+      ]
+  },
+  {
+      "id": "e95ea90a.a813d8",
+      "type": "debug",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "active": true,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "false",
+      "x": 430,
+      "y": 260,
+      "wires": []
+  },
+  {
+      "id": "b670d9f3.134eb8",
+      "type": "delete-session",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "x": 260,
+      "y": 440,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "19944fc9.c9237",
+      "type": "catch",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "scope": null,
+      "uncaught": false,
+      "x": 240,
+      "y": 580,
+      "wires": [
+          [
+              "3a338a9f.17c156"
+          ]
+      ]
+  },
+  {
+      "id": "3a338a9f.17c156",
+      "type": "debug",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "active": true,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "error",
+      "targetType": "msg",
+      "x": 400,
+      "y": 580,
+      "wires": []
+  },
+  {
+      "id": "acc33cf3.f21a",
+      "type": "element-action",
+      "z": "b333aac5.8be6a8",
+      "name": "send keys",
+      "locateUsing": "xpath",
+      "locateValue": "//*[@id=\"q\"]",
+      "action": "sendKeys",
+      "sendKeys": "hi",
+      "x": 240,
+      "y": 340,
+      "wires": [
+          [
+              "5f57519b.33bc9"
+          ]
+      ]
+  },
+  {
+      "id": "52fabde4.40f334",
+      "type": "get-title",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "x": 600,
+      "y": 340,
+      "wires": [
+          [
+              "b670d9f3.134eb8",
+              "54afd8dd.3df5a8"
+          ]
+      ]
+  },
+  {
+      "id": "54afd8dd.3df5a8",
+      "type": "debug",
+      "z": "b333aac5.8be6a8",
+      "name": "",
+      "active": true,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "false",
+      "x": 790,
+      "y": 340,
+      "wires": []
+  },
+  {
+      "id": "5f57519b.33bc9",
+      "type": "element-action",
+      "z": "b333aac5.8be6a8",
+      "name": "click go",
+      "locateUsing": "xpath",
+      "locateValue": "//*[@id=\"submit\"]",
+      "action": "click",
+      "sendKeys": "",
+      "x": 400,
+      "y": 340,
+      "wires": [
+          [
+              "52fabde4.40f334"
+          ]
+      ]
+  }
+]

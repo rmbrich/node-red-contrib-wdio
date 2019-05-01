@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('new-session', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            webdriverUri: {value: ''},
+            webdriverProvider: {value: ''},
+            webdriverBrowser: {value: ''},
+            logLevel: {value: 'error'}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || 'new session'
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="new-session">
+    <div class="form-row">
+        <label for="node-input-webdriverProvider"><i class="fa fa-globe"></i> Webdriver Remote Provider</label>
+        <select type="text" id="node-input-webdriverProvider" style="width:70%;">
+            <option value="browserless.io">browserless.io</option>
+            <option value="local" selected>Local Webdriver</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-webdriverUri"><i class="fa fa-globe"></i> Webdriver Host URI</label>
+        <input id="node-input-webdriverUri" type="text" placeholder="https://host:port/path">
+    </div>
+    <div class="form-row">
+        <label for="node-input-webdriverBrowser"><i class="fa fa-globe"></i> Browser</label>
+        <select type="text" id="node-input-webdriverBrowser" style="width:70%;">
+            <option value="chrome" selected>Chrome</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-logLevel"><i class="fa fa-tasks"></i> Log Level</label>
+        <select type="text" id="node-input-logLevel" style="width:70%;">
+            <option value="trace">Trace</option>
+            <option value="debug">Debug</option>
+            <option value="info">Info</option>
+            <option value="warn">Warn</option>
+            <option value="error" selected>Error</option>
+            <option value="silent">Silent</option>        
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>    
+</script>

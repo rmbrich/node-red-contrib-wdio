@@ -9,8 +9,9 @@ If any nodes encounter an error, for example unable to locate a given element on
 After a flow completes, close the Selenium session using the "delete session" node. Alternatively, when Node Red exits, any open Selenium sessions will be closed.
 
 ## Example flow
-Basic flow example:
+Basic flow example: [https://github.com/rmbrich/node-red-contrib-webdriverio/blob/master/examples/basic.json](https://github.com/rmbrich/node-red-contrib-webdriverio/blob/master/examples/basic.json)
 
+![basic flow](https://raw.githubusercontent.com/rmbrich/node-red-contrib-webdriverio/master/examples/basic.png)
 
 ## Local development
 Follow these steps to use the nodes locally while developing or making changes (i.e. not as an npm package). This assumes you have a separate local NodeJS project that has Node Red as a dependency.
@@ -20,6 +21,13 @@ Follow these steps to use the nodes locally while developing or making changes (
 3. Switch to your Node Red test project, then run `yarn link node-red-contrib-webdriverio`.
 4. Start Node Red. The Webdriver IO nodes will be available in the palette.
 5. After making changes in the node-red-contrib-webdriverio project, simply restart Node Red in your test project and the changes will be live.
+
+To add a new node,
+
+1. Node naming should line up to the Webdriver IO [Webdriver Protocol](https://webdriver.io/docs/api/webdriver.html).
+2. Create the corresponding .html and .js files in the `src` directory.
+3. If introducing a new method that could be used across multiple nodes, consider using the `wdio-common.js` module.
+4. Add the new nodes to the `"nodes"` object in `package.json`.
 
 ## Contributing
 Pull requests are welcomed for bug fixes, new nodes, and new features. Please push your changes in a branch and initiate a Pull Request against master. 

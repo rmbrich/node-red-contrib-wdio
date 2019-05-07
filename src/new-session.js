@@ -6,8 +6,8 @@ module.exports = function(RED) {
         const node = this
 
         const webdriverConfig = Object.assign(
-            { logLevel: config.logLevel },
-            parseUri(config.webdriverUri),
+            { logLevel: config.logLevel }, config.webdriverUri,
+           // parseUri(config.webdriverUri),
             getCapabilities(config.webdriverProvider, config.webdriverBrowser)
         )        
         common.clearStatus(node)
@@ -55,12 +55,13 @@ const getCapabilities = (vendor, browser) => {
     let capabilities
 
     if (vendor === 'browserless.io') {
-        capabilities = {
+        capabilities= {
             browserName: browser,
-            chromeOptions: {
+            'goog:chromeOptions': {
                 args: ['--headless', '--no-sandbox']
             }
         }
+        
     } else if (vendor === 'local') {
         capabilities = {
             browserName: browser

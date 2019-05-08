@@ -1,11 +1,13 @@
 <script type="text/javascript">
     function setAction() {
         let action = $("#node-input-action").val()
-
+        $('#actionSendKeys').hide();
+        $('#get_Attribute').hide();
         if (action == 'sendKeys') {
             $('#actionSendKeys').show()
-        } else {
-            $('#actionSendKeys').hide()
+        }
+        if(action == 'getAttribute'){
+            $('#get_Attribute').show()
         }
     }
 
@@ -17,7 +19,8 @@
             locateUsing: {value: 'xpath'},
             locateValue: {value: ''},
             action: {value: 'click'},
-            sendKeys: {value: ''}
+            sendKeys: {value: ''},
+            attribute: {value: ''}
         },
         inputs: 1,
         outputs: 1,
@@ -55,13 +58,20 @@
             <option value="click">Click</option>
             <option value="clear">Clear</option>
             <option value="sendKeys">Send Keys</option>
+            <option value="getValue">Get Value</option>
+            <option value="getText">Get Value</option>
+            <option value="getAttribute">Get Value</option>
+            <option value="takeScreenShot">Get Value</option>
         </select>
     </div>
     <div class="form-row" id="actionSendKeys">
         <label for="node-input-sendKeys"><i class="fa fa-tasks"></i> Text to Send</label>
         <input id="node-input-sendKeys" type="text">
     </div>
-
+    <div class="form-row" id="get_Attribute">
+        <label for="node-input-attribute"><i class="fa fa-tasks"></i> Text to Send</label>
+        <input id="node-input-attribute" type="text">
+    </div>
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input id="node-input-name" type="text">

@@ -18,7 +18,22 @@ module.exports = function(RED) {
                     await browser.elementClear(elementId)
                 } else if (config.action === 'sendKeys') {
                     await browser.elementSendKeys(elementId, Array.from(config.sendKeys))
-                }                
+                }
+                else if (config.action === 'getValue') {
+                    msg.payload = await browser.getElementAttribute(elementId,'value')
+                }
+                else if (config.action === 'getText') {
+                    msg.payload = await browser.getElementText(elementId)
+                } 
+                /*else if (config.action === 'setValue') {
+                    await browser.addValue(elementId,'value')
+                }*/
+                else if (config.action === 'getAttribute') {
+                    msg.payload = await browser.getElementAttribute(elementId, config.attribute)
+                }
+                else if(config.action === 'takeScreenShot'){
+                    msg.payload = await browser.takeElementScreenshot(elementId)
+                }                   
                 common.successStatus(node)
                 node.send(msg)
             } catch (e) {

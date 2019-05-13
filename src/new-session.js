@@ -6,8 +6,8 @@ module.exports = function(RED) {
         const node = this
 
         const webdriverConfig = Object.assign(
-            { logLevel: config.logLevel }, config.webdriverUri,
-           // parseUri(config.webdriverUri),
+            { logLevel: config.logLevel }, //config.webdriverUri,
+            parseUri(config.webdriverUri),
             getCapabilities(config.webdriverProvider, config.webdriverBrowser)
         )        
         common.clearStatus(node)
@@ -41,6 +41,7 @@ module.exports = function(RED) {
 
 const parseUri = (uri) => {
     let parsed = uri.match(/(\w+):\/\/(.+):(\d+)(\/.*)/)
+    console.log(uri, parsed)
     if (parsed[parsed.length-1] !== '/') parsed += '/'
 
     return {
@@ -56,7 +57,7 @@ const getCapabilities = (vendor, browser) => {
 
     if (vendor === 'browserless.io') {
         capabilities= {
-            browserName: browser,
+            browserName: browser,            
             'goog:chromeOptions': {
                 args: ['--headless', '--no-sandbox']
             }
@@ -64,7 +65,9 @@ const getCapabilities = (vendor, browser) => {
         
     } else if (vendor === 'local') {
         capabilities = {
-            browserName: browser
+            alwaysMatch: {
+                browserName: browser,               
+            }
         }
     }
 

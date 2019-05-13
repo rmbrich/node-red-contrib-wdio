@@ -14,5 +14,8 @@
   },
   "dependencies": {
     "webdriverio": "^5.7.15"
+  },
+  "devDependencies": {
+    "@wdio/allure-reporter": "^5.7.11"
   }
 }

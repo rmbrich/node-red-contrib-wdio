@@ -40,6 +40,7 @@ module.exports.deleteSession = async (context) => {
     let browser = context.flow.get('wdio_browser')
     try {
         b = { sessionId: browser.sessionId }
+        await browser.closeWindow()       
         await browser.deleteSession()
         context.flow.set('wdio_browser', null)
         if (newSessionNode) module.exports.disconnected(newSessionNode)

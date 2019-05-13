@@ -9,7 +9,8 @@
       "element-action": "src/element-action.js",
       "get-title": "src/get-title.js",
       "navigate-to": "src/navigate-to.js",
-      "new-session": "src/new-session.js"
+      "new-session": "src/new-session.js",
+      "browser-action": "src/browser-action.js"
     }
   },
   "dependencies": {

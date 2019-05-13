@@ -6,8 +6,8 @@ module.exports = function(RED) {
         const node = this
 
         const webdriverConfig = Object.assign(
-            { logLevel: config.logLevel }, //config.webdriverUri,
-            parseUri(config.webdriverUri),
+            { logLevel: config.logLevel },
+            parseUri(config.webdriverUri, node),
             getCapabilities(config.webdriverProvider, config.webdriverBrowser)
         )        
         common.clearStatus(node)
@@ -39,17 +39,22 @@ module.exports = function(RED) {
     RED.nodes.registerType("new-session", newSession)
 }
 
-const parseUri = (uri) => {
-    let parsed = uri.match(/(\w+):\/\/(.+):(\d+)(\/.*)/)
-    console.log(uri, parsed)
-    if (parsed[parsed.length-1] !== '/') parsed += '/'
-
-    return {
-        protocol: parsed[1],
-        hostname: parsed[2],
-        port: parseInt(parsed[3]),
-        path: parsed[4]
+const parseUri = (uri, node) => {
+    let uriComponents
+    try {
+        if (uri[uri.length-1] !== '/') uri += '/'
+        let parsed = uri.match(/(\w+):\/\/(.+):(\d+)(\/.*)/)
+        uriComponents = {
+            protocol: parsed[1],
+            hostname: parsed[2],
+            port: parseInt(parsed[3]),
+            path: parsed[4]
+        }
+    } catch (e) {
+        common.handleError(new Error('Invalid URI, expected format "<protocol>://<host>:<port>/<path>'), node)
     }
+    
+    return uriComponents
 }
 
 const getCapabilities = (vendor, browser) => {

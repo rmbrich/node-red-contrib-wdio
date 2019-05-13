@@ -63,16 +63,14 @@ const getCapabilities = (vendor, browser) => {
     if (vendor === 'browserless.io') {
         capabilities= {
             browserName: browser,            
-            'goog:chromeOptions': {
+            chromeOptions: {
                 args: ['--headless', '--no-sandbox']
             }
         }
         
     } else if (vendor === 'local') {
         capabilities = {
-            alwaysMatch: {
-                browserName: browser,               
-            }
+            browserName: browser
         }
     }
 

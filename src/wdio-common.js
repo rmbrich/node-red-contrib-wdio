@@ -70,6 +70,40 @@ module.exports.getElementId = async (browser, using, value) => {
     return elementId
 }
 
+module.exports.getElement = async (browser,using, value) => {
+    console.log(using)
+    let selector = ''
+    let element
+    switch (using){
+        case 'id':
+            selector = '#'+value
+            break
+        case 'name':
+            selector = value
+            break
+        case 'className':
+            selector = '.'+value
+            break
+        case 'selector':
+            selector = value
+            break
+        default:
+            selector = value
+            break
+    }
+
+    console.log(selector)
+
+    try{
+        element = browser.$(selector)
+    }
+    catch (e) {
+        throw(e)
+    }
+
+    return element
+}
+
 module.exports.handleError = (e, node, msg) => {
     console.log(e)
     module.exports.errorStatus(node)

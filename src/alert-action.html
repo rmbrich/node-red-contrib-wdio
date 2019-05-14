@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    function setAlertAction() {
+        let action = $("#node-input-action").val()
+        $('#actionSendText').hide()
+        if (action === 'sendAlertText') {
+            $('#actionSendText').show()
+        }
+    }
+
+    RED.nodes.registerType('alert-action', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            action: {value: 'accept'},
+            sendText: {value: ''}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || "alert action"
+        },
+        oneditprepare: function() {
+            setAlertAction()
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="alert-action">
+
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setAlertAction()">
+            <option value="dismiss">Dismiss Alert</option>
+            <option value="accept">Accept Alert</option>
+            <option value="getAlertText">Get Alert Text</option>
+            <option value="sendAlertText">Send Alert Text</option>
+            <option value="isExists">Is Alert Exists</option>
+        </select>
+    </div>
+    <div class="form-row" id="actionSendText">
+        <label for="node-input-sendText"><i class="fa fa-tasks"></i> Text to Send</label>
+        <input id="node-input-sendText" type="text">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>    
+</script>

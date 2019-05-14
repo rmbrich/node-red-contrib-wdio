@@ -8,7 +8,10 @@
       "delete-session": "src/delete-session.js",
       "element-action": "src/element-action.js",
       "new-session": "src/new-session.js",
-      "browser-action": "src/browser-action.js"
+      "browser-action": "src/browser-action.js",
+      "element-check": "src/element-check.js",
+      "alert-action": "src/alert-action.js",
+      "dropdown-action": "src/dropdown-action.js"
     }
   },
   "dependencies": {

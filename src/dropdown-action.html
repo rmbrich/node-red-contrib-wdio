@@ -1,0 +1,89 @@
+<script type="text/javascript">
+    function setDropdownAction() {
+        let action = $("#node-input-action").val()
+        $('#actionText').hide();
+        $('#actionAttr').hide();
+        $('#actionIndex').hide();
+        $('#actionValue').hide();
+        if (action == 'selectByAttr') {
+            $('#actionAttr').show()
+            $('#actionValue').show()
+        }
+        if(action == 'selectByIndex'){
+            $('#actionIndex').show()
+        }
+        if(action == 'selectByText'){
+            $('#actionText').show()
+        }
+    }
+
+    RED.nodes.registerType('dropdown-action', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            locateUsing: {value: 'xpath'},
+            locateValue: {value: ''},
+            action: {value: 'selectByAttr'},
+            text: {value: ''},
+            attribute: {value: ''},
+            index: {value: ''},
+            value: {value: ''}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || "dropdown action"
+        },
+        oneditprepare: function() {
+            setDropdownAction()
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="dropdown-action">
+    <div class="form-row">
+        <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
+        <select type="text" id="node-input-locateUsing" style="width:70%;">
+            <option value="id">id</option>
+            <option value="name">name</option>
+            <option value="className">Class Name</option>
+            <option value="selector">Jquery Selector</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-locateValue"><i class="fa fa-tasks"></i> Selector</label>
+        <input id="node-input-locateValue" type="text">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setDropdownAction()">
+            <option value="selectByAttr">Select by Attribute</option>
+            <option value="selectByIndex">Select by Index</option>
+            <option value="selectByText">Select by Visual text</option>
+            <option value="getValue">Get Value</option>
+        </select>
+    </div>
+    <div class="form-row" id="actionText">
+        <label for="node-input-text"><i class="fa fa-tasks"></i> Text to Select</label>
+        <input id="node-input-text" type="text">
+    </div>    
+    <div class="form-row" id="actionAttr">
+        <label for="node-input-attribute"><i class="fa fa-tasks"></i> Attribute Name</label>
+        <input id="node-input-attribute" type="text">
+    </div>
+    <div class="form-row" id="actionValue">
+        <label for="node-input-value"><i class="fa fa-tasks"></i> Value</label>
+        <input id="node-input-value" type="text">
+    </div>
+    <div class="form-row" id="actionIndex">
+        <label for="node-input-index"><i class="fa fa-tasks"></i> Index</label>
+        <input id="node-input-index" type="text">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>    
+</script>

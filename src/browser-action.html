@@ -1,14 +1,14 @@
 <script type="text/javascript">
-    function setAction() {
+    function setBrowserAction() {
         let action = $("#node-input-action").val()
-        $('#actionURL').hide();
-        $('#actionWidth').hide();
-        $('#actionHeight').hide();
-        if (action == 'setSize') {
-            $('#actionWidth').show();
-            $('#actionHeight').show();
+        $('#actionURL').hide()
+        $('#actionWidth').hide()
+        $('#actionHeight').hide()
+        if (action === 'setSize') {
+            $('#actionWidth').show()
+            $('#actionHeight').show()
         }
-        if(action == 'navigateTo'){
+        if(action === 'navigateTo'){
             $('#actionURL').show()
         }
     }
@@ -18,7 +18,7 @@
         color: '#a6bbcf',
         defaults: {
             name: {value: ''},
-            action: {value: 'click'},
+            action: {value: 'navigateTo'},
             url: {value: ''},
             width: {value: ''},
             height: {value: ''}
@@ -30,7 +30,7 @@
             return this.name || "browser action"
         },
         oneditprepare: function() {
-            setAction()
+            setBrowserAction()
         }
     })
 </script>
@@ -38,7 +38,7 @@
 <script type="text/x-red" data-template-name="browser-action">
     <div class="form-row">
         <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
-        <select type="text" id="node-input-action" style="width:70%;" onchange="setAction()">
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setBrowserAction()">
             <option value="getUrl">Get URL</option>
             <option value="navigateTo">Navigate To</option>
             <option value="back">Back</option>

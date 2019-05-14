@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    function setWindowAction() {
+        let action = $("#node-input-action").val()
+        $('#actionValue').hide();
+        $('#actionIndex').hide();
+        if (action === 'byName' || action === 'open') {
+            $('#actionValue').show()
+        }
+        if(action == 'byIndex'){
+            $('#actionIndex').show()
+        }
+    }
+
+    RED.nodes.registerType('window-action', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            action: {value: 'click'},
+            value: {value: ''},
+            index: {value: ''}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || "window action"
+        },
+        oneditprepare: function() {
+            setWindowAction()
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="window-action">
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setWindowAction()">
+            <option value="byName">Switch to Window by Name</option>
+            <option value="byIndex">Switch to Window by Index</option>
+            <option value="getHandle">Get window handle</option>
+            <option value="close">Close Window</option>
+            <option value="open">Open Window</option>
+        </select>
+    </div>
+    <div class="form-row" id="actionValue">
+        <label for="node-input-value"><i class="fa fa-tasks"></i> Window Name</label>
+        <input id="node-input-value" type="text" placeholder="urlOrTitleToMatch">
+    </div>
+    <div class="form-row" id="actionIndex">
+        <label for="node-input-index"><i class="fa fa-tasks"></i> Index</label>
+        <input id="node-input-index" type="text" placeholder="starts 0">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>    
+</script>

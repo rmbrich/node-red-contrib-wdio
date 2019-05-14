@@ -71,7 +71,6 @@ module.exports.getElementId = async (browser, using, value) => {
 }
 
 module.exports.getElement = async (browser,using, value) => {
-    console.log(using)
     let selector = ''
     let element
     switch (using){
@@ -91,8 +90,6 @@ module.exports.getElement = async (browser,using, value) => {
             selector = value
             break
     }
-
-    console.log(selector)
 
     try{
         element = browser.$(selector)

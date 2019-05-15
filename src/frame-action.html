@@ -1,0 +1,47 @@
+<script type="text/javascript">
+    function setFrameAction() {
+        let action = $("#node-input-action").val()
+        $('#actionFrame').hide()
+        if (action === 'frame') {
+            $('#actionFrame').show()
+        }
+    }
+
+    RED.nodes.registerType('frame-action', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            action: {value: 'click'},
+            value: {value: ''},
+            index: {value: ''}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || "frame action"
+        },
+        oneditprepare: function() {
+            setFrameAction()
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="frame-action">
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setFrameAction()">
+            <option value="frame">Switch to Frame</option>
+            <option value="parentFrame">Switch to Parent Frame</option>
+        </select>
+    </div>
+    <div class="form-row" id="actionFrame">
+        <label for="node-input-frame"><i class="fa fa-tasks"></i> Frame Name</label>
+        <input id="node-input-frame" type="text" >
+    </div>    
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>    
+</script>

@@ -12,7 +12,8 @@
       "element-check": "src/element-check.js",
       "alert-action": "src/alert-action.js",
       "dropdown-action": "src/dropdown-action.js",
-      "window-action": "src/window-action.js"
+      "window-action": "src/window-action.js",
+      "frame-action": "src/frame-action.js"
     }
   },
   "dependencies": {

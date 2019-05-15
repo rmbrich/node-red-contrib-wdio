@@ -17,7 +17,7 @@ module.exports = function(RED) {
                 if (config.action === 'byName') {
                     await browser.switchWindow(value)
                 } else if (config.action === 'byIndex') {
-                    let handles =  browser.getWindowHandles()   
+                    let handles =  await browser.getWindowHandles()   
                     await browser.switchWindow(handles[index])
                 } else if (config.action === 'getHandle') {
                     await browser.getWindowHandle()

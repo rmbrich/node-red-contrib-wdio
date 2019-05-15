@@ -1,6 +1,9 @@
 <script type="text/javascript">
     function setExplicitAction() {
-        let action = $("#node-input-action").val()        
+        let action = $("#node-input-action").val()
+        $('#actionTime').show()
+        $('#actionReverse').show()
+        $('#actionError').show()        
         if (action === 'until') {
             $('#actionTime').hide()
             $('#actionReverse').hide()

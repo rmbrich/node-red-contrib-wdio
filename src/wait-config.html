@@ -1,6 +1,9 @@
 <script type="text/javascript">
     function setWaitAction() {
         let action = $("#node-input-action").val()        
+        $('#actionImplicit').show()
+        $('#actionPageLoad').show()
+        $('#actionScript').show()
         if (action === 'get') {
             $('#actionImplicit').hide()
             $('#actionPageLoad').hide()

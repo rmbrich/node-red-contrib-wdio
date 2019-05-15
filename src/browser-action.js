@@ -44,6 +44,9 @@ module.exports = function(RED) {
                 else if (config.action === 'pageSource') {
                     msg.payload = await browser.getPageSource()
                 }
+                else if (config.action === 'getCookies') {
+                    msg.payload = await browser.getAllCookies()
+                }
                 common.successStatus(node)
                 node.send(msg)
             } catch (e) {

@@ -13,7 +13,10 @@
       "alert-action": "src/alert-action.js",
       "dropdown-action": "src/dropdown-action.js",
       "window-action": "src/window-action.js",
-      "frame-action": "src/frame-action.js"
+      "frame-action": "src/frame-action.js",
+      "execute-script": "src/execute-script.js",
+      "explicit-wait": "src/explicit-wait.js",
+      "wait-config": "src/wait-config.js"
     }
   },
   "dependencies": {

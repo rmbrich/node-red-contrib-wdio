@@ -1,0 +1,79 @@
+<script type="text/javascript">
+    function setExplicitAction() {
+        let action = $("#node-input-action").val()        
+        if (action === 'until') {
+            $('#actionTime').hide()
+            $('#actionReverse').hide()
+            $('#actionError').hide()
+        }
+    }
+
+    RED.nodes.registerType('explicit-wait', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            locateUsing: {value: 'xpath'},
+            locateValue: {value: ''},
+            time: {value: ''},
+            reverse: {value: 'false'},
+            error: {value: ''}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || "explicit wait"
+        },
+        oneditprepare: function() {
+            setExplicitAction()
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="explicit-wait">
+    <div class="form-row">
+        <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
+        <select type="text" id="node-input-locateUsing" style="width:70%;">
+            <option value="id">id</option>
+            <option value="name">name</option>
+            <option value="css selector">CSS selector</option>
+            <option value="link text">Link text</option>
+            <option value="partial link text">Partial link text</option>
+            <option value="tag name">Tag name</option>
+            <option value="xpath" selected>XPath</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-locateValue"><i class="fa fa-tasks"></i> Selector</label>
+        <input id="node-input-locateValue" type="text">
+    </div> 
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setExplicitAction()">
+            <option value="displayed">Wait for Displayed</option>
+            <option value="enabled">Wait for Enabled</option>
+            <option value="exists">Wait for Exist</option>
+            <option value="until">Wait Until</option>
+        </select>
+    </div>
+    <div class="form-row" id="actionTime" >
+        <label for="node-input-time"><i class="fa fa-tasks"></i> Time to wait</label>
+        <input id="node-input-time" type="text" placeholder="in ms">
+    </div>
+    <div class="form-row" id="actionReverse" >
+        <label for="node-input-reverse"><i class="fa fa-tasks"></i> Reverse</label>
+        <select type="text" id="node-input-reverse" style="width:70%;">
+            <option value="false">false</option>
+            <option value="true">true</option>
+        </select>
+    </div>   
+    <div class="form-row" id="actionError" >
+        <label for="node-input-error"><i class="fa fa-tasks"></i> Error Message</label>
+        <input id="node-input-error" type="text" placeholder="error message">
+    </div>      
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>
+</script> 

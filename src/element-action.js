@@ -11,7 +11,7 @@ module.exports = function(RED) {
             try {
                 let browser = await common.getBrowser(node.context())
                 let elementId = await common.getElementId(browser, config.locateUsing, config.locateValue)
-
+                
                 let value = config.sendKeys || msg.value
                 let attribute  = config.attribute || msg.attribute
                 
@@ -33,7 +33,11 @@ module.exports = function(RED) {
                 }
                 else if(config.action === 'takeScreenShot'){
                     msg.payload = await browser.takeElementScreenshot(elementId)
-                }                   
+                }    
+                else if(config.action === 'hover'){
+                    let element = await common.getElement(browser, config.locateUsing, config.locateValue)
+                    msg.payload = await element.moveTo()
+                }               
                 common.successStatus(node)
                 node.send(msg)
             } catch (e) {

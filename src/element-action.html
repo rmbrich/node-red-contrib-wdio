@@ -2,7 +2,7 @@
     function setAction() {
         let action = $("#node-input-action").val()
         $('#actionSendKeys').hide();
-        $('#get_Attribute').hide();
+        $('#getAttribute').hide();
         if (action == 'sendKeys') {
             $('#actionSendKeys').show()
         }
@@ -69,7 +69,7 @@
         <label for="node-input-sendKeys"><i class="fa fa-tasks"></i> Text to Send</label>
         <input id="node-input-sendKeys" type="text">
     </div>
-    <div class="form-row" id="get_Attribute">
+    <div class="form-row" id="getAttribute">
         <label for="node-input-attribute"><i class="fa fa-tasks"></i>Attribute Name</label>
         <input id="node-input-attribute" type="text">
     </div>

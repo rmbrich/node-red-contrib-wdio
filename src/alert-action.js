@@ -1,5 +1,15 @@
 const common = require('./wdio-common')
 
+const isAlertPresent = async (browser) => {
+    try{
+        await browser.getAlertText()
+        return true
+    }
+    catch(e){
+        return false
+    } 
+}
+
 module.exports = function(RED) {
 
     function alertAction(config) {
@@ -11,17 +21,8 @@ module.exports = function(RED) {
             try {
                 let browser = await common.getBrowser(node.context())
                
-                let value = config.sendText || msg.value
+                let value = config.sendText || msg.value           
                 
-                let isAlertPresent = async () => {
-                    try{
-                        await browser.getAlertText()
-                        return true
-                    }
-                    catch(e){
-                        return false
-                    } 
-                }
                 
                 if (config.action === 'dismiss') {
                     await browser.dismissAlert()
@@ -36,8 +37,8 @@ module.exports = function(RED) {
                         //await browser.keys(Array.from(value))
                     }                    
                 }
-                else if (config.action === 'isExists') {                    
-                    msg.payload = await isAlertPresent()
+                else if (config.action === 'isPresent') {                    
+                    msg.payload = await isAlertPresent(browser)
                 }                
                 common.successStatus(node)
                 node.send(msg)

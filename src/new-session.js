@@ -25,11 +25,13 @@ module.exports = function(RED) {
 
         node.on('close', async (done) => {
             try {
-                let b = await common.deleteSession(node.context())
-                let sessionId = ''
-                if (b && b.sessionId) sessionId = b.sessionId
-                common.disconnectedStatus(node)
-                node.log('Disconnected webdriver session ' + sessionId)                
+                if(config.killSession){
+                    let b = await common.deleteSession(node.context())
+                    let sessionId = ''
+                    if (b && b.sessionId) sessionId = b.sessionId
+                    common.disconnectedStatus(node)
+                    node.log('Disconnected webdriver session ' + sessionId)
+                }                
             } catch (e) {
                 common.handleError(e, node, msg)            
             }

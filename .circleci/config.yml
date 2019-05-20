@@ -1,0 +1,37 @@
+version: 2.1
+defaults: &defaults
+  working_directory: ~/app
+  docker:
+    - image: "circleci/node:dubnium"
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: "v1-{{ checksum "yarn.lock" }}"
+      - run: |
+          yarn install
+      - save_cache:
+          key: "v1-{{ checksum "yarn.lock" }}"
+          paths:
+            - ~/app/node_modules
+  publish:
+    docker:
+      - image: "circleci/node:dubnium"
+    steps:
+      - restore_cache:
+          key: "v1-{{ checksum "yarn.lock" }}"
+      - run: |
+          yarn publish      
+workflows:
+  install_and_test:
+    jobs:
+      - install
+  publish:
+    requires:
+      - install_and_test
+    filters:
+      branches:
+        only:
+          - master

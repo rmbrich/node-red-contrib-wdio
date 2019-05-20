@@ -34,7 +34,6 @@ module.exports = function(RED) {
                 else if (config.action === 'sendAlertText') {
                     if(await isAlertPresent()){  
                         await browser.sendAlertText(value)
-                        //await browser.keys(Array.from(value))
                     }                    
                 }
                 else if (config.action === 'isPresent') {                    

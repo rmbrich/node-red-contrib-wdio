@@ -27,5 +27,5 @@ module.exports = function(RED) {
             }
         })
     }
-    RED.nodes.registerType('wait-config', waitConfig)
+    RED.nodes.registerType('implicit-wait-config', waitConfig)
 }

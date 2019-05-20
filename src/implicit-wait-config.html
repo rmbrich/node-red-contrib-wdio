@@ -11,7 +11,7 @@
         }
     }
 
-    RED.nodes.registerType('wait-config', {
+    RED.nodes.registerType('implicit-wait-config', {
         category: 'Webdriver IO',
         color: '#a6bbcf',
         defaults: {
@@ -24,7 +24,7 @@
         outputs: 1,
         icon: 'white-globe.png',
         label: function() {
-            return this.name || "wait config"
+            return this.name || "implicit-wait config"
         },
         oneditprepare: function() {
             setWaitAction()
@@ -32,7 +32,7 @@
     })
 </script>
 
-<script type="text/x-red" data-template-name="wait-config">
+<script type="text/x-red" data-template-name="implicit-wait-config">
     
     <div class="form-row">
         <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>

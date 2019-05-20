@@ -16,7 +16,7 @@
       "frame-action": "src/frame-action.js",
       "execute-script": "src/execute-script.js",
       "explicit-wait": "src/explicit-wait.js",
-      "wait-config": "src/implicit-wait-config.js"
+      "implicit-wait-config": "src/implicit-wait-config.js"
     }
   },
   "dependencies": {

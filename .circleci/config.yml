@@ -4,23 +4,34 @@ defaults: &defaults
   docker:
     - image: "circleci/node:dubnium"
 jobs:
-  install:
+  checkout:
     <<: *defaults
     steps:
       - checkout
+      - save_cache:
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+          paths:
+            - ~/app
+  install:
+    <<: *defaults
+    steps:
       - restore_cache:
-          key: 'v1-{{ checksum "yarn.lock" }}'
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+      - restore_cache:
+          key: 'v1-modules-{{ checksum "yarn.lock" }}'
       - run: |
           yarn install
       - save_cache:
-          key: 'v1-{{ checksum "yarn.lock" }}'
+          key: 'v1-modules-{{ checksum "yarn.lock" }}'
           paths:
             - ~/app/node_modules
   test:
     <<: *defaults
     steps:
       - restore_cache:
-          key: 'v1-{{ checksum "yarn.lock" }}'
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+      - restore_cache:
+          key: 'v1-modules-{{ checksum "yarn.lock" }}'
       - run: |
           echo "placeholder for future tests"
   publish:
@@ -28,7 +39,9 @@ jobs:
       - image: "circleci/node:dubnium"
     steps:
       - restore_cache:
-          key: 'v1-{{ checksum "yarn.lock" }}'
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+      - restore_cache:
+          key: 'v1-modules-{{ checksum "yarn.lock" }}'
       - run: |
           yarn publish      
 workflows:

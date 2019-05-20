@@ -16,6 +16,13 @@ jobs:
           key: 'v1-{{ checksum "yarn.lock" }}'
           paths:
             - ~/app/node_modules
+  test:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: 'v1-{{ checksum "yarn.lock" }}'
+      - run: |
+          echo "placeholder for future tests"
   publish:
     docker:
       - image: "circleci/node:dubnium"
@@ -28,10 +35,13 @@ workflows:
   install_test_publish:
     jobs:
       - install
-      - publish:
+      - test:
           requires:
             - install
-          filters:
-            branches:
-              only:
-                - master
+      - publish:
+          requires:
+            - test
+#          filters:
+#            branches:
+#              only:
+#                - master

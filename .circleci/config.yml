@@ -28,10 +28,13 @@ workflows:
   install_and_test:
     jobs:
       - install
-  publish:
-    requires:
-      - install_and_test
-    filters:
-      branches:
-        only:
-          - master
+  publish:    
+    jobs:
+      - install
+      - publish:
+          requires:
+            - install
+          filters:
+            branches:
+              only:
+                - master

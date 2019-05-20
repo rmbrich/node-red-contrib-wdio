@@ -47,7 +47,10 @@ jobs:
 workflows:
   install_test_publish:
     jobs:
-      - install
+      - checkout
+      - install:
+          requires:
+            - checkout 
       - test:
           requires:
             - install

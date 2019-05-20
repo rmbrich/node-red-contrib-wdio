@@ -25,10 +25,7 @@ jobs:
       - run: |
           yarn publish      
 workflows:
-  install_and_test:
-    jobs:
-      - install
-  publish:    
+  install_test_publish:
     jobs:
       - install
       - publish:

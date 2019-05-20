@@ -35,6 +35,7 @@ jobs:
       - run: |
           echo "placeholder for future tests"
   publish:
+    <<: *defaults
     docker:
       - image: "circleci/node:dubnium"
     steps:

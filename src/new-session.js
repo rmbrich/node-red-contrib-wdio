@@ -25,11 +25,13 @@ module.exports = function(RED) {
 
         node.on('close', async (done) => {
             try {
-                let b = await common.deleteSession(node.context())
-                let sessionId = ''
-                if (b && b.sessionId) sessionId = b.sessionId
-                common.disconnectedStatus(node)
-                node.log('Disconnected webdriver session ' + sessionId)                
+                if(config.killSession){
+                    let b = await common.deleteSession(node.context())
+                    let sessionId = ''
+                    if (b && b.sessionId) sessionId = b.sessionId
+                    common.disconnectedStatus(node)
+                    node.log('Disconnected webdriver session ' + sessionId)
+                }                
             } catch (e) {
                 common.handleError(e, node, msg)            
             }
@@ -61,12 +63,13 @@ const getCapabilities = (vendor, browser) => {
     let capabilities
 
     if (vendor === 'browserless.io') {
-        capabilities = {
-            browserName: browser,
+        capabilities= {
+            browserName: browser,            
             chromeOptions: {
                 args: ['--headless', '--no-sandbox']
             }
         }
+        
     } else if (vendor === 'local') {
         capabilities = {
             browserName: browser

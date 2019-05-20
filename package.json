@@ -1,18 +1,28 @@
 {
   "name": "node-red-contrib-webdriverio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Rob <rob.brichler@gmail.com>",
   "license": "Apache-2.0",
   "node-red": {
     "nodes": {
       "delete-session": "src/delete-session.js",
       "element-action": "src/element-action.js",
-      "get-title": "src/get-title.js",
-      "navigate-to": "src/navigate-to.js",
-      "new-session": "src/new-session.js"
+      "new-session": "src/new-session.js",
+      "browser-action": "src/browser-action.js",
+      "element-check": "src/element-check.js",
+      "alert-action": "src/alert-action.js",
+      "dropdown-action": "src/dropdown-action.js",
+      "window-action": "src/window-action.js",
+      "frame-action": "src/frame-action.js",
+      "execute-script": "src/execute-script.js",
+      "explicit-wait": "src/explicit-wait.js",
+      "wait-config": "src/implicit-wait-config.js"
     }
   },
   "dependencies": {
     "webdriverio": "^5.7.15"
+  },
+  "devDependencies": {
+    "@wdio/allure-reporter": "^5.7.11"
   }
 }

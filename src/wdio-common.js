@@ -2,7 +2,7 @@ const wdio = require ('webdriverio')
 let newSessionNode
 
 module.exports.getBrowser = (context) => {
-    let browser = context.flow.get('wdio_browser')
+    let browser = context.global.get('wdio_browser')
     if (!browser || !browser.sessionId) throw new Error('No session defined - call newSession first')
 
     return browser
@@ -27,7 +27,7 @@ module.exports.newSession = async (config, node, context) => {
     let browser
     try {
         browser = await wdio.remote(config)
-        context.flow.set('wdio_browser', browser)
+        context.global.set('wdio_browser', browser)
         newSessionNode = node
     } catch (e) {
         throw(e)
@@ -37,11 +37,12 @@ module.exports.newSession = async (config, node, context) => {
 
 module.exports.deleteSession = async (context) => {
     let b
-    let browser = context.flow.get('wdio_browser')
+    let browser = context.global.get('wdio_browser')
     try {
         b = { sessionId: browser.sessionId }
+        await browser.closeWindow()       
         await browser.deleteSession()
-        context.flow.set('wdio_browser', null)
+        context.global.set('wdio_browser', null)
         if (newSessionNode) module.exports.disconnected(newSessionNode)
     } catch (e) {
     }
@@ -67,6 +68,37 @@ module.exports.getElementId = async (browser, using, value) => {
         throw(e)
     }
     return elementId
+}
+
+module.exports.getElement = async (browser,using, value) => {
+    let selector = ''
+    let element
+    switch (using){
+        case 'id':
+            selector = '#'+value
+            break
+        case 'name':
+            selector = value
+            break
+        case 'className':
+            selector = '.'+value
+            break
+        case 'selector':
+            selector = value
+            break
+        default:
+            selector = value
+            break
+    }
+
+    try{
+        element = await browser.$(selector)
+    }
+    catch (e) {
+        throw(e)
+    }
+
+    return element
 }
 
 module.exports.handleError = (e, node, msg) => {

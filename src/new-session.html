@@ -1,4 +1,8 @@
 <script type="text/javascript">
+    function setValue(){
+        return $('#node-input-killSession').val()
+    }
+
     RED.nodes.registerType('new-session', {
         category: 'Webdriver IO',
         color: '#a6bbcf',
@@ -7,7 +11,8 @@
             webdriverUri: {value: ''},
             webdriverProvider: {value: ''},
             webdriverBrowser: {value: ''},
-            logLevel: {value: 'error'}
+            logLevel: {value: 'error'},
+            killSession: {value: setValue()}
         },
         inputs: 1,
         outputs: 1,
@@ -47,7 +52,10 @@
             <option value="silent">Silent</option>        
         </select>
     </div>
-
+    <div class="form-row">
+        <label for="node-input-killSession"><i class="fa fa-tasks"></i> Kill existing session on flow deploy</label>
+        <input id="node-input-killSession" type="checkbox" onclick="setValue()" style="width:auto;">
+    </div>
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input id="node-input-name" type="text">

@@ -1,11 +1,13 @@
 <script type="text/javascript">
     function setAction() {
         let action = $("#node-input-action").val()
-
+        $('#actionSendKeys').hide();
+        $('#getAttribute').hide();
         if (action == 'sendKeys') {
             $('#actionSendKeys').show()
-        } else {
-            $('#actionSendKeys').hide()
+        }
+        if(action == 'getAttribute'){
+            $('#get_Attribute').show()
         }
     }
 
@@ -17,7 +19,8 @@
             locateUsing: {value: 'xpath'},
             locateValue: {value: ''},
             action: {value: 'click'},
-            sendKeys: {value: ''}
+            sendKeys: {value: ''},
+            attribute: {value: ''}
         },
         inputs: 1,
         outputs: 1,
@@ -35,6 +38,8 @@
     <div class="form-row">
         <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
         <select type="text" id="node-input-locateUsing" style="width:70%;">
+            <option value="id">id</option>
+            <option value="name">name</option>
             <option value="css selector">CSS selector</option>
             <option value="link text">Link text</option>
             <option value="partial link text">Partial link text</option>
@@ -53,13 +58,21 @@
             <option value="click">Click</option>
             <option value="clear">Clear</option>
             <option value="sendKeys">Send Keys</option>
+            <option value="getValue">Get Value</option>
+            <option value="getText">Get Text</option>
+            <option value="getAttribute">Get Attribute</option>
+            <option value="takeScreenShot">Element Screenshot</option>
+            <option value="hover">Hover</option>
         </select>
     </div>
     <div class="form-row" id="actionSendKeys">
         <label for="node-input-sendKeys"><i class="fa fa-tasks"></i> Text to Send</label>
         <input id="node-input-sendKeys" type="text">
     </div>
-
+    <div class="form-row" id="getAttribute">
+        <label for="node-input-attribute"><i class="fa fa-tasks"></i>Attribute Name</label>
+        <input id="node-input-attribute" type="text">
+    </div>
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input id="node-input-name" type="text">

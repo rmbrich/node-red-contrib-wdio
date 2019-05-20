@@ -1,0 +1,71 @@
+<script type="text/javascript">
+    function setBrowserAction() {
+        let action = $("#node-input-action").val()
+        $('#actionURL').hide()
+        $('#actionWidth').hide()
+        $('#actionHeight').hide()
+        if (action === 'setSize') {
+            $('#actionWidth').show()
+            $('#actionHeight').show()
+        }
+        if(action === 'navigateTo'){
+            $('#actionURL').show()
+        }
+    }
+
+    RED.nodes.registerType('browser-action', {
+        category: 'Webdriver IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            action: {value: 'navigateTo'},
+            url: {value: ''},
+            width: {value: ''},
+            height: {value: ''}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function() {
+            return this.name || "browser action"
+        },
+        oneditprepare: function() {
+            setBrowserAction()
+        }
+    })
+</script>
+
+<script type="text/x-red" data-template-name="browser-action">
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select type="text" id="node-input-action" style="width:70%;" onchange="setBrowserAction()">
+            <option value="getUrl">Get URL</option>
+            <option value="navigateTo">Navigate To</option>
+            <option value="back">Back</option>
+            <option value="forward">Forward</option>
+            <option value="refresh">Refresh</option>
+            <option value="getTitle">Get Title</option>
+            <option value="setSize">Set window Size</option>
+            <option value="maximize">Maximize Window</option>
+            <option value="takeScreenShot">Screenshot</option>
+            <option value="pageSource">Get Page Source</option>
+            <option value="getCookies">Get All Cookies</option>
+        </select>
+    </div>
+    <div class="form-row" id="actionURL">
+        <label for="node-input-url"><i class="fa fa-tasks"></i> URL</label>
+        <input id="node-input-url" type="text">
+    </div>
+    <div class="form-row" id="actionWidth">
+        <label for="node-input-width"><i class="fa fa-tasks"></i>Width</label>
+        <input id="node-input-width" type="text">
+    </div>
+    <div class="form-row" id="actionHeight">
+        <label for="node-input-height"><i class="fa fa-tasks"></i>Height</label>
+        <input id="node-input-height" type="text">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input id="node-input-name" type="text">
+    </div>    
+</script>

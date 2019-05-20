@@ -7,8 +7,7 @@ jobs:
   install:
     <<: *defaults
     steps:
-      - restore_cache:
-          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+      - checkout
       - run: |
           yarn install
       - save_cache:

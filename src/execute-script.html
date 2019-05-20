@@ -1,54 +1,53 @@
 <script type="text/javascript">
-
-    RED.nodes.registerType('execute-script', {
-        category: 'Webdriver IO',
-        color: '#a6bbcf',
-        defaults: {
-            name: {value: ''},
-            locateUsing: {value: 'xpath'},
-            locateValue: {value: ''},
-            action: {value: 'sync'},
-            script: {value: ''}
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: 'white-globe.png',
-        label: function() {
-            return this.name || "execute script"
-        }
-    })
+  RED.nodes.registerType('execute-script', {
+    category: 'Webdriver IO',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: '' },
+      locateUsing: { value: 'xpath' },
+      locateValue: { value: '' },
+      action: { value: 'sync' },
+      script: { value: '' }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'white-globe.png',
+    label: function() {
+      return this.name || 'execute script'
+    }
+  })
 </script>
 
 <script type="text/x-red" data-template-name="execute-script">
-    <div class="form-row">
-        <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
-        <select type="text" id="node-input-locateUsing" style="width:70%;">
-            <option value="id">id</option>
-            <option value="name">name</option>
-            <option value="css selector">CSS selector</option>
-            <option value="link text">Link text</option>
-            <option value="partial link text">Partial link text</option>
-            <option value="tag name">Tag name</option>
-            <option value="xpath" selected>XPath</option>
-        </select>
-    </div>
-    <div class="form-row">
-        <label for="node-input-locateValue"><i class="fa fa-tasks"></i> Selector</label>
-        <input id="node-input-locateValue" type="text">
-    </div> 
-    <div class="form-row">
-        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
-        <select type="text" id="node-input-action" style="width:70%;">
-            <option value="sync">Sync</option>
-            <option value="aSync">Async</option>
-        </select>
-    </div>
-    <div class="form-row">
-        <label for="node-input-script"><i class="fa fa-tasks"></i> Script</label>
-        <input id="node-input-script" type="text" placeholder="javascript in string">
-    </div>   
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input id="node-input-name" type="text">
-    </div>
-</script> 
+  <div class="form-row">
+      <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
+      <select type="text" id="node-input-locateUsing" style="width:70%;">
+          <option value="id">id</option>
+          <option value="name">name</option>
+          <option value="css selector">CSS selector</option>
+          <option value="link text">Link text</option>
+          <option value="partial link text">Partial link text</option>
+          <option value="tag name">Tag name</option>
+          <option value="xpath" selected>XPath</option>
+      </select>
+  </div>
+  <div class="form-row">
+      <label for="node-input-locateValue"><i class="fa fa-tasks"></i> Selector</label>
+      <input id="node-input-locateValue" type="text">
+  </div>
+  <div class="form-row">
+      <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+      <select type="text" id="node-input-action" style="width:70%;">
+          <option value="sync">Sync</option>
+          <option value="aSync">Async</option>
+      </select>
+  </div>
+  <div class="form-row">
+      <label for="node-input-script"><i class="fa fa-tasks"></i> Script</label>
+      <input id="node-input-script" type="text" placeholder="javascript in string">
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input id="node-input-name" type="text">
+  </div>
+</script>

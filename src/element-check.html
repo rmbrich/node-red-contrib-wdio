@@ -1,51 +1,50 @@
 <script type="text/javascript">
-    
-    RED.nodes.registerType('element-check', {
-        category: 'Webdriver IO',
-        color: '#a6bbcf',
-        defaults: {
-            name: {value: ''},
-            locateUsing: {value: 'xpath'},
-            locateValue: {value: ''},
-            check: {value: 'selected'}
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: 'white-globe.png',
-        label: function() {
-            return this.name || "element check"
-        }
-    })
+  RED.nodes.registerType('element-check', {
+    category: 'Webdriver IO',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: '' },
+      locateUsing: { value: 'xpath' },
+      locateValue: { value: '' },
+      check: { value: 'selected' }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'white-globe.png',
+    label: function() {
+      return this.name || 'element check'
+    }
+  })
 </script>
 
 <script type="text/x-red" data-template-name="element-check">
-    <div class="form-row">
-        <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
-        <select type="text" id="node-input-locateUsing" style="width:70%;">
-            <option value="id">id</option>
-            <option value="name">name</option>
-            <option value="css selector">CSS selector</option>
-            <option value="link text">Link text</option>
-            <option value="partial link text">Partial link text</option>
-            <option value="tag name">Tag name</option>
-            <option value="xpath" selected>XPath</option>
-        </select>
-    </div>
-    <div class="form-row">
-        <label for="node-input-locateValue"><i class="fa fa-tasks"></i> Selector</label>
-        <input id="node-input-locateValue" type="text">
-    </div>
+  <div class="form-row">
+      <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
+      <select type="text" id="node-input-locateUsing" style="width:70%;">
+          <option value="id">id</option>
+          <option value="name">name</option>
+          <option value="css selector">CSS selector</option>
+          <option value="link text">Link text</option>
+          <option value="partial link text">Partial link text</option>
+          <option value="tag name">Tag name</option>
+          <option value="xpath" selected>XPath</option>
+      </select>
+  </div>
+  <div class="form-row">
+      <label for="node-input-locateValue"><i class="fa fa-tasks"></i> Selector</label>
+      <input id="node-input-locateValue" type="text">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-check"><i class="fa fa-tasks"></i> Check</label>
-        <select type="text" id="node-input-check" style="width:70%;">
-            <option value="selected">Is Element Selected</option>
-            <option value="enabled">Is Element Enabled</option>
-            <option value="displayed">Is Element Displayed</option>
-        </select>
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input id="node-input-name" type="text">
-    </div>    
+  <div class="form-row">
+      <label for="node-input-check"><i class="fa fa-tasks"></i> Check</label>
+      <select type="text" id="node-input-check" style="width:70%;">
+          <option value="selected">Is Element Selected</option>
+          <option value="enabled">Is Element Enabled</option>
+          <option value="displayed">Is Element Displayed</option>
+      </select>
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input id="node-input-name" type="text">
+  </div>
 </script>

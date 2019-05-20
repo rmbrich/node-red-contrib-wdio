@@ -1,60 +1,60 @@
 <script type="text/javascript">
-    function setWaitAction() {
-        let action = $("#node-input-action").val()        
-        $('#actionImplicit').show()
-        $('#actionPageLoad').show()
-        $('#actionScript').show()
-        if (action === 'get') {
-            $('#actionImplicit').hide()
-            $('#actionPageLoad').hide()
-            $('#actionScript').hide()
-        }
+  function setWaitAction() {
+    let action = $('#node-input-action').val()
+    $('#actionImplicit').show()
+    $('#actionPageLoad').show()
+    $('#actionScript').show()
+    if (action === 'get') {
+      $('#actionImplicit').hide()
+      $('#actionPageLoad').hide()
+      $('#actionScript').hide()
     }
+  }
 
-    RED.nodes.registerType('implicit-wait-config', {
-        category: 'Webdriver IO',
-        color: '#a6bbcf',
-        defaults: {
-            name: {value: ''},
-            implicit: {value: ''},
-            pageload: {value: ''},
-            script: {value: ''}
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: 'white-globe.png',
-        label: function() {
-            return this.name || "implicit-wait config"
-        },
-        oneditprepare: function() {
-            setWaitAction()
-        }
-    })
+  RED.nodes.registerType('implicit-wait-config', {
+    category: 'Webdriver IO',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: '' },
+      implicit: { value: '' },
+      pageload: { value: '' },
+      script: { value: '' }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'white-globe.png',
+    label: function() {
+      return this.name || 'implicit-wait config'
+    },
+    oneditprepare: function() {
+      setWaitAction()
+    }
+  })
 </script>
 
 <script type="text/x-red" data-template-name="implicit-wait-config">
-    
-    <div class="form-row">
-        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
-        <select type="text" id="node-input-action" style="width:70%;" onchange="setWaitAction()">
-            <option value="set">Set timeouts</option>
-            <option value="get">Get Timeouts</option>
-        </select>
-    </div>
-    <div class="form-row" id="actionImplicit" >
-        <label for="node-input-implicit"><i class="fa fa-tasks"></i> Implicit Wait</label>
-        <input id="node-input-implicit" type="text" placeholder="in ms">
-    </div>
-    <div class="form-row" id="actionPageLoad" >
-        <label for="node-input-pageload"><i class="fa fa-tasks"></i> Page Load Timeout</label>
-        <input id="node-input-pageload" type="text" placeholder="in ms">
-    </div>   
-    <div class="form-row" id="actionScript" >
-        <label for="node-input-script"><i class="fa fa-tasks"></i> Script Timeout</label>
-        <input id="node-input-script" type="text" placeholder="in ms">
-    </div>      
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input id="node-input-name" type="text">
-    </div>
-</script> 
+
+  <div class="form-row">
+      <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+      <select type="text" id="node-input-action" style="width:70%;" onchange="setWaitAction()">
+          <option value="set">Set timeouts</option>
+          <option value="get">Get Timeouts</option>
+      </select>
+  </div>
+  <div class="form-row" id="actionImplicit" >
+      <label for="node-input-implicit"><i class="fa fa-tasks"></i> Implicit Wait</label>
+      <input id="node-input-implicit" type="text" placeholder="in ms">
+  </div>
+  <div class="form-row" id="actionPageLoad" >
+      <label for="node-input-pageload"><i class="fa fa-tasks"></i> Page Load Timeout</label>
+      <input id="node-input-pageload" type="text" placeholder="in ms">
+  </div>
+  <div class="form-row" id="actionScript" >
+      <label for="node-input-script"><i class="fa fa-tasks"></i> Script Timeout</label>
+      <input id="node-input-script" type="text" placeholder="in ms">
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input id="node-input-name" type="text">
+  </div>
+</script>

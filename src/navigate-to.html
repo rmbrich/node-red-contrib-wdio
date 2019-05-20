@@ -1,28 +1,28 @@
 <script type="text/javascript">
-    RED.nodes.registerType('navigate-to', {
-        category: 'Webdriver IO',
-        color: '#a6bbcf',
-        defaults: {
-            url: {value: ''},
-            name: {value: ''}
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "white-globe.png",
-        label: function() {
-            return this.name || 'navigate to'
-        }
-    })
+  RED.nodes.registerType('navigate-to', {
+    category: 'Webdriver IO',
+    color: '#a6bbcf',
+    defaults: {
+      url: { value: '' },
+      name: { value: '' }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'white-globe.png',
+    label: function() {
+      return this.name || 'navigate to'
+    }
+  })
 </script>
 
 <script type="text/x-red" data-template-name="navigate-to">
-    <div class="form-row">
-        <label for="node-input-url"><i class="fa fa-globe"></i> Navigate to URL</label>
-        <input id="node-input-url" type="text" placeholder="http://www.google.com">
-    </div>
+  <div class="form-row">
+      <label for="node-input-url"><i class="fa fa-globe"></i> Navigate to URL</label>
+      <input id="node-input-url" type="text" placeholder="http://www.google.com">
+  </div>
 
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input id="node-input-name" type="text">
-    </div>    
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input id="node-input-name" type="text">
+  </div>
 </script>

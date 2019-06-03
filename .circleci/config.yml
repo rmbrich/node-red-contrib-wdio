@@ -23,12 +23,11 @@ jobs:
           echo "placeholder for future tests"
   publish:
     <<: *defaults
-    docker:
-      - image: "circleci/node:dubnium"
     steps:
       - restore_cache:
           key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
       - run: |
+          echo echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
           yarn publish      
 workflows:
   install_test_publish:

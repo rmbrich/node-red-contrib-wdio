@@ -27,7 +27,8 @@ jobs:
       - restore_cache:
           key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
       - run: |
-          echo echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: |
           yarn publish      
 workflows:
   install_test_publish:

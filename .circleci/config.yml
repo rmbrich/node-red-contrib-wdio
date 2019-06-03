@@ -1,0 +1,46 @@
+version: 2.1
+defaults: &defaults
+  working_directory: ~/app
+  docker:
+    - image: "circleci/node:dubnium"
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: |
+          yarn install
+      - save_cache:
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+          paths:
+            - ~/app
+  test:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+      - run: |
+          echo "placeholder for future tests"
+  publish:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: 'v1-app-{{ .Environment.CIRCLE_SHA1 }}-{{ .Environment.CIRCLE_TAG }}'
+      - run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: |
+          yarn publish      
+workflows:
+  install_test_publish:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
+      - publish:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master

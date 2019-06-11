@@ -19,7 +19,7 @@ module.exports = function(RED) {
       try {
         let browser = await common.getBrowser(node.context())
 
-        let value = config.sendText || msg.value
+        let value = msg.value || config.sendText 
 
         if (config.action === 'dismiss') {
           await browser.dismissAlert()

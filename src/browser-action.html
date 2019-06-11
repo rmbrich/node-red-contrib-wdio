@@ -69,3 +69,32 @@
       <input id="node-input-name" type="text">
   </div>
 </script>
+
+<script type="text/x-red" data-help-name="browser-action">
+  <h3>Selected action of the node performs the corresponding actions on current instance of a browser.</h3>
+  <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>action: <span class="property-type">string</span></dt>
+          <dd>Al the browser actions. Selected action will be performed on the browser.</dd>
+          <dt>url: <span class="property-type">string</span></dt>
+          <dd>Browser navigates to the provide url when we select the action as "navigateTo"</dd>
+          <dd>Can be parameterized using <code>msg.url</code>, by leaving the URL empty on node configuration.</dd>
+          <dt>width: <span class="property-type">string</span></dt>
+          <dd>Browser window will be adjusted to specified width.</dd>
+          <dd>Can be parameterized using <code>msg.width</code>, by leaving the Width empty on node configuration.</dd>
+          <dt>height: <span class="property-type">string</span></dt>
+          <dd>Browser window will be adjusted to specified height.</dd>
+          <dd>Can be parameterized using <code>msg.height</code>, by leaving the Height empty on node configuration.</dd>
+      </dl>
+
+  <h3>Outputs</h3>
+      <dl class="message-properties">
+          <dt>msg.payload: <span class="property-type">string/Object</span></dt>
+          <dd>returns url of the current browser tab when we select the action as "getUrl"</dd>
+          <dd>returns title of the current browser tab when we select the action as "getTitle"</dd>
+          <dd>returns Base64 encode string value of screenshot of open window when we select the action as "takeScreenShot"</dd>
+          <dd>returns entire pagesource of the document when we select the action as "pageSource"</dd>
+          <dd>returns all cookies stored at the moment in Object when we select the action as "getCookies"</dd>
+      </dl>
+
+</script>

@@ -38,8 +38,8 @@ module.exports = function(RED) {
         } else if (config.action === 'hover') {
           let element = await common.getElement(
             browser,
-            config.locateUsing,
-            config.locateValue
+            locateUsing,
+            locateValue
           )
           msg.payload = await element.moveTo()
         }

@@ -8,11 +8,14 @@ module.exports = function(RED) {
 
     node.on('input', async (msg) => {
       try {
+        let locateUsing = config.locateUsing || msg.locateUsing
+        let locateValue = config.locateValue || msg.locateValue
+
         let browser = await common.getBrowser(node.context())
         let elementId = await common.getElementId(
           browser,
-          config.locateUsing,
-          config.locateValue
+          locateUsing,
+          locateValue
         )
 
         if (config.check === 'selected') {

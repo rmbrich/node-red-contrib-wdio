@@ -76,7 +76,7 @@ const getCapabilities = (vendor, browser) => {
     }
   }else if (vendor === 'local' && browser === 'chromium') {
     capabilities = {
-      browserName: browser,
+      browserName: 'chrome',
       'goog:chromeOptions': {
         args: ['--headless', '--no-sandbox']
       }

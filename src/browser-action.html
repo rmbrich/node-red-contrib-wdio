@@ -71,11 +71,11 @@
 </script>
 
 <script type="text/x-red" data-help-name="browser-action">
-  <h3>Selected action of the node performs the corresponding actions on current instance of a browser.</h3>
+  <h3>Performs from a list of standard browser actions on the current instance of the browser.</h3>
   <h3>Inputs</h3>
       <dl class="message-properties">
           <dt>action: <span class="property-type">string</span></dt>
-          <dd>Al the browser actions. Selected action will be performed on the browser.</dd>
+          <dd>All the browser actions. Selected action will be performed on the browser.</dd>
           <dt>url: <span class="property-type">string</span></dt>
           <dd>Browser navigates to the provide url when we select the action as "navigateTo"</dd>
           <dd>Can be parameterized using <code>msg.url</code>, by leaving the URL empty on node configuration.</dd>
@@ -90,11 +90,11 @@
   <h3>Outputs</h3>
       <dl class="message-properties">
           <dt>msg.payload: <span class="property-type">string/Object</span></dt>
-          <dd>returns url of the current browser tab when we select the action as "getUrl"</dd>
-          <dd>returns title of the current browser tab when we select the action as "getTitle"</dd>
-          <dd>returns Base64 encode string value of screenshot of open window when we select the action as "takeScreenShot"</dd>
-          <dd>returns entire pagesource of the document when we select the action as "pageSource"</dd>
-          <dd>returns all cookies stored at the moment in Object when we select the action as "getCookies"</dd>
+          <dd><b>Get URL</b> returns url of the current browser tab<br></dd>
+          <dd><b>Get Title</b> returns title of the current browser tab<br></dd>
+          <dd><b>Screenshot</b> returns Base64 encode string value of screenshot of open window<br></dd>
+          <dd><b>Get Page Source</b> returns entire page source of the document<br></dd>
+          <dd><b>Get All Cookies</b> returns all cookies stored at the moment inside of an Object<br></dd>
       </dl>
 
 </script>

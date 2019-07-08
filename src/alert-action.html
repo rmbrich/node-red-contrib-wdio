@@ -38,10 +38,14 @@
           <option value="isPresent">Is Alert Present</option>
       </select>
   </div>
+
+
   <div class="form-row" id="actionSendText">
       <label for="node-input-sendText"><i class="fa fa-tasks"></i> Text to Send</label>
       <input id="node-input-sendText" type="text">
   </div>
+
+
   <div class="form-row">
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input id="node-input-name" type="text">
@@ -49,19 +53,27 @@
 </script>
 
 
+
 <script type="text/x-red" data-help-name="alert-action">
-  <h3>Selected action of the node performs on popup alerts/windows.</h3>
-  <h3>Inputs</h3>
+  <h3>Selected action of the node performs on pop-up alerts/windows.</h3>
+  <h3>Details</h3>
       <dl class="message-properties">
-          <dt>action: <span class="property-type">string</span></dt>
-          <dd>Action to perform on the popup alert/window.</dd>
+          <dt>Action: <span class="property-type">select</span></dt>
+          <dd>Action to perform on the pop-up alert/window:
+            <ul>
+                <li>Dismiss Alert</li>
+                <li>Accept Alert</li>
+                <li>Get Alert Text</li>
+                <li>Is Alert Present</li>
+            </ul>
+          </dd>
       </dl>
 
   <h3>Outputs</h3>
       <dl class="message-properties">
           <dt>msg.payload: <span class="property-type">string/bool</span></dt>
-          <dd>returns the alert text when we select the alert action as "getAlertText"</dd>
-          <dd>returns <code>true/false</code> when we select the alert action as "isPresent"</dd>
+          <dd>If the <b>Get Alert Text</b> action is selected, the <code>ms.payload</code> will return the text on the alert message<br></dd>
+          <dd>If the <b>Is Alert Present</b> action is selected, <code>ms.payload</code> will return a true/false <code>boolean</code></dd>
       </dl>
 
 </script>

@@ -38,14 +38,14 @@
       <select type="text" id="node-input-action" style="width:70%;" onchange="setWindowAction()">
           <option value="byName">Switch to Window by Name</option>
           <option value="byIndex">Switch to Window by Index</option>
-          <option value="getHandle">Get window handle</option>
+          <option value="getHandle">Get Window handle</option>
           <option value="close">Close Window</option>
           <option value="open">Open Window</option>
       </select>
   </div>
   <div class="form-row" id="actionValue">
       <label for="node-input-value"><i class="fa fa-tasks"></i> Window Name</label>
-      <input id="node-input-value" type="text" placeholder="urlOrTitleToMatch">
+      <input id="node-input-value" type="text" placeholder="URL or Title of window">
   </div>
   <div class="form-row" id="actionIndex">
       <label for="node-input-index"><i class="fa fa-tasks"></i> Index</label>
@@ -56,3 +56,36 @@
       <input id="node-input-name" type="text">
   </div>
 </script>
+
+<script type="text/x-red" data-help-name="window-action">
+  <h3>Selected action of the node performs on browser windows.</h3>
+
+  <h3>Inputs</h3>
+        <dl class="message-properties">
+          <dt><code>msg.value</code>: <span class="property-type">string</span></dt>
+          <dd>URL or Title the window to target</dd>
+          <dt><code>msg.index</code><span class="property-type">string</span></dt>
+          <dd>zero-based index to target the desired window<br></dd>
+        </dl>
+  <h3>Details</h3>
+      <dl class="message-properties">
+          <dt>Action: <span class="property-type">Select</span></dt>
+          <dd>
+            <ul>
+                <li><b>Switch to Window by Name</b></li>
+                <ul>
+                    <li>Use URL or Title to switch to the browser tab/window.</li>
+                </ul>
+                <li><b>Switch to Window by Index</b></li>
+                <ul>
+                    <li>Use a zero-based index to target the browser tab/window</li>
+                </ul>
+                <li><b>Get window Handle</b></li>
+                <li><b>Close Window</b></li>
+                <li><b>Open Window</b></li>
+            </ul>
+          </dd>
+      </dl>
+
+</script>
+

@@ -37,7 +37,7 @@
   <div class="form-row">
       <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
       <select type="text" id="node-input-action" style="width:70%;" onchange="setWaitAction()">
-          <option value="set">Set timeouts</option>
+          <option value="set">Set Timeouts</option>
           <option value="get">Get Timeouts</option>
       </select>
   </div>
@@ -57,4 +57,28 @@
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input id="node-input-name" type="text">
   </div>
+</script>
+
+<script type="text/x-red" data-help-name="implicit-wait-config">
+  <h3>The Set Timeouts command sets timeout durations associated with the current session.</h3>
+  <h3>Inputs</h3>
+        <dl class="message-properties">
+          <dt><code>mgs.implicit</code>: <span class="property-type">int</span></dt>
+          <dd>Integer in ms for session implicit wait timeout</dd>
+          <dt><code>msg.pageload</code><span class="property-type">int</span></dt>
+          <dd>Integer in ms for session page load timeout<br></dd>
+          <dt><code>msg.script</code><span class="property-type">int</span></dt>
+          <dd>Integer in ms for session script timeout</dd>
+        </dl>
+
+  <h3>Details</h3>
+   <p><b>Action</b> specifies the action to be performed on the target web element. Actions includes:
+        <ul>
+            <li><b>Get Timeouts</b>: The Get Timeouts command gets timeout durations associated with the current session.</li>
+            <li><b>Set Timeouts</b>: The Set Timeouts command sets timeout durations associated with the current session. The timeouts that can be controlled are listed below.</li>
+        </ul>
+
+   <p><b>Implicit Wait</b> Integer in ms for session implicit wait timeout.<br></p>
+   <p><b>Page Load Timeout</b> Integer in ms for session page load timeout.<br></p>
+   <p><b>Script Timeout</b> Integer in ms for session script timeout.<br></p>
 </script>

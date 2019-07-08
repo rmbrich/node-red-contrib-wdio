@@ -78,3 +78,48 @@
       <input id="node-input-name" type="text">
   </div>
 </script>
+
+
+<script type="text/x-red" data-help-name="element-action">
+  <h3>Perform a list of actions on a target web element.</h3>
+  <h3>Inputs</h3>
+        <dl class="message-properties">
+
+          <dt><code>mgs.locateUsing</code>: <span class="property-type">string</span></dt>
+          <dd>specifies the type of web element identifier:
+            <ul>
+                <li>id</li>
+                <li>name</li>
+                <li>CSS selector</li>
+                <li>Link text</li>
+                <li>Partial link text</li>
+                <li>Tag name</li>
+                <li>XPath</li>
+            </ul>
+            <br>
+          </dd>
+          <dt><code>msg.locateValue</code><span class="property-type">string</span></dt>
+          <dd>value passed to the web element identifier (Locate Method)<br></dd>
+
+          <dt><code>msg.value</code><span class="property-type">string</span></dt>
+          <dd>If you elect to SendKeys to the web element, this is the value that would be sent</dd>
+        </dl>
+
+  <h3>Details</h3>
+   <p><b>Locate Method</b> specifies the method used to target the web element. This option can be selected manually from the Properties panel OR it can be received from <code>mgs.locateUsing</code><br></p>
+   <p><b>Selector</b> value used by the Locate Method to target the web element. This option can be selected manually from the Properties panel OR it can be received from <code>mgs.locateValue</code><br></p>
+   <p><b>Action</b> specifies the action to be performed on the target web element. Actions includes:
+        <ul>
+            <li>Click</li>
+            <li>Clear</li>
+            <li>Send Keys</li>
+            <li>Get Value</li>
+            <li>Get Text</li>
+            <li>Get Attribute</li>
+            <li>Element Screenshot</li>
+            <li>Hover</li>
+        </ul>
+   </p>
+   <p><b>Text to Send</b> if the Send Keys action is selected, this value would send the text to the selected web element.<br></p>
+</script>
+

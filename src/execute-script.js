@@ -12,11 +12,7 @@ module.exports = function(RED) {
         let locateValue = config.locateValue || msg.locateValue
 
         let browser = await common.getBrowser(node.context())
-        let element = await common.getElement(
-          browser,
-          locateUsing,
-          locateValue
-        )
+        let element = await common.getElement(browser, locateUsing, locateValue)
 
         let script = config.script || msg.script
 

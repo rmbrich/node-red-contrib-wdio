@@ -48,3 +48,40 @@
       <input id="node-input-name" type="text">
   </div>
 </script>
+
+<script type="text/x-red" data-help-name="element-check">
+  <h3>Selected action of the node performs a target web element inside the browser.</h3>
+  <h3>Inputs</h3>
+        <dl class="message-properties">
+
+          <dt><code>mgs.locateUsing</code>: <span class="property-type">string</span></dt>
+          <dd>specifies the type of web element identifier:
+            <ul>
+                <li>id</li>
+                <li>name</li>
+                <li>CSS selector</li>
+                <li>Link text</li>
+                <li>Partial link text</li>
+                <li>Tag name</li>
+                <li>XPath</li>
+            </ul>
+            <br>
+          </dd>
+          <dt><code>msg.locateValue</code><span class="property-type">string</span></dt>
+          <dd>value passed to the web element identifier (Locate Method)<br></dd>
+
+        </dl>
+
+  <h3>Details</h3>
+  <dl class="message-properties">
+   <p><b>Locate Method</b> specifies the method used to target the web element. This option can be selected manually from the Properties panel OR it can be received from <code>mgs.locateUsing</code><br></p>
+   <p><b>Selector</b> value used by the Locate Method to target the web element. This option can be selected manually from the Properties panel OR it can be received from <code>mgs.locateValue</code><br></p>
+   <p><b>Check</b> specifies the action to be performed on the target web element. Actions includes:
+        <ul>
+            <li>Is Element Selected</li>
+            <li>Is Element Enabled</li>
+            <li>Is Element Displayed</li>
+        </ul>
+   </p>
+   </dl>
+</script>

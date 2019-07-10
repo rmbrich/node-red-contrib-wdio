@@ -39,6 +39,7 @@
       <label for="node-input-webdriverBrowser"><i class="fa fa-globe"></i> Browser</label>
       <select type="text" id="node-input-webdriverBrowser" style="width:70%;">
           <option value="chrome" selected>Chrome</option>
+          <option value="chromium">Chromium</option>
       </select>
   </div>
   <div class="form-row">
@@ -60,4 +61,22 @@
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input id="node-input-name" type="text">
   </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="new-session">
+  <h3>Creates new session and also sets the "wdio_browser" global variable to the new session object.</h3>
+  <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>webdriverProvider: <span class="property-type">string</span></dt>
+          <dd>Webdriver server name.</dd>
+          <dt>webdriverUri: <span class="property-type">string</span></dt>
+          <dd>The string format should be <protocal>://<hotsname>:<port number>/<path>, user 80/8080/443 if it is service based webdriver provider.</dd>
+          <dt>Browser: <span class="property-type">string</span></dt>
+          <dd>Current configurations are only for chrome.</dd>
+          <dt>logLevel: <span class="property-type">string</span></dt>
+          <dd>Select the log level to display the logs on console during run.</dd>
+          <dt>killSession: <span class="property-type">Bool</span></dt>
+          <dd>Kill open session during deploy. This would be helpful to debug the changes by not closing the current browser.</dd>
+      </dl>
 </script>

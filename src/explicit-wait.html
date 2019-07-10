@@ -18,6 +18,7 @@
       name: { value: '' },
       locateUsing: { value: 'xpath' },
       locateValue: { value: '' },
+      action: { value: '' },
       time: { value: '' },
       reverse: { value: 'false' },
       error: { value: '' }
@@ -38,13 +39,10 @@
   <div class="form-row">
       <label for="node-input-locateUsing"><i class="fa fa-tasks"></i> Locate Method</label>
       <select type="text" id="node-input-locateUsing" style="width:70%;">
-          <option value="id">id</option>
-          <option value="name">name</option>
-          <option value="css selector">CSS selector</option>
-          <option value="link text">Link text</option>
-          <option value="partial link text">Partial link text</option>
-          <option value="tag name">Tag name</option>
-          <option value="xpath" selected>XPath</option>
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="className">Class Name</option>
+        <option value="selector">Jquery Selector</option>
       </select>
   </div>
   <div class="form-row">
@@ -61,7 +59,7 @@
       </select>
   </div>
   <div class="form-row" id="actionTime" >
-      <label for="node-input-time"><i class="fa fa-tasks"></i> Time to wait</label>
+      <label for="node-input-time"><i class="fa fa-tasks"></i> Time to Wait</label>
       <input id="node-input-time" type="text" placeholder="in ms">
   </div>
   <div class="form-row" id="actionReverse" >
@@ -79,4 +77,47 @@
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input id="node-input-name" type="text">
   </div>
+</script>
+
+<script type="text/x-red" data-help-name="explicit-wait">
+  <h3>The Set Timeouts command sets timeout durations associated with the current session.</h3>
+  <h3>Inputs</h3>
+        <dl class="message-properties">
+        <dt><code>mgs.locateUsing</code>: <span class="property-type">string</span></dt>
+          <dd>specifies the type of web element identifier:
+            <ul>
+                <li>id</li>
+                <li>name</li>
+                <li>CSS selector</li>
+                <li>Link text</li>
+                <li>Partial link text</li>
+                <li>Tag name</li>
+                <li>XPath</li>
+            </ul>
+            <br>
+          </dd>
+          <dt><code>msg.locateValue</code><span class="property-type">string</span></dt>
+          <dd>value passed to the web element identifier (Locate Method)<br></dd>
+
+          <dt><code>msg.reverse</code><span class="property-type">boolean</span></dt>
+          <dd>If set to true, webdriver will wait for the <i>opposite</i> of the action selected<br></dd>
+        </dl>
+
+  <h3>Details</h3>
+    <p><b>Locate Method</b> specifies the method used to target the web element. This option can be selected manually from the Properties panel OR it can be received from <code>mgs.locateUsing</code><br></p>
+    <p><b>Selector</b> value used by the Locate Method to target the web element. This option can be selected manually from the Properties panel OR it can be received from <code>mgs.locateValue</code><br></p>
+    <p><b>Action</b> to perform on the pop-up alert/window:
+            <ul>
+                <li>Wait for Displayed</li>
+                <li>Wait for Enabled</li>
+                <li>Wait for Exist</li>
+                <li>Wait Until</li>
+            </ul>
+    </p>
+     <p><b>Time to Wait</b> Set time to wait in milliseconds. <br></p>
+     <p><b>Reverse</b> If set to true, webdriver will wait for the <i>opposite</i> of the action selected. <br></p>
+     <p><b>Error Message</b> If an error exists this error message overrides the default error message. <br></p>
+
+
+
 </script>

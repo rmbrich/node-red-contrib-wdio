@@ -3,6 +3,9 @@ const common = require('./wdio-common')
 module.exports = function(RED) {
   function waitConfig(config) {
     RED.nodes.createNode(this, config)
+    this.implicit = config.implicit
+    this.pageload = config.pageload
+    this.script = config.script
     const node = this
     common.clearStatus(node)
 
@@ -10,12 +13,17 @@ module.exports = function(RED) {
       try {
         let browser = await common.getBrowser(node.context())
 
-        let implicit = config.implicit || msg.implicit
-        let pageload = config.pageload || msg.pageload
-        let script = config.script || msg.script
+        let implicit = parseInt(node.implicit || msg.implicit)
+        let pageLoad = parseInt(node.pageload || msg.pageload)
+        let script = parseInt(node.script || msg.script)
 
         if (config.action === 'set') {
-          await browser.setTimeouts(implicit, pageload, script)
+          var timeouts = {
+            implicit,
+            pageLoad,
+            script
+          }
+          await browser.setTimeout(timeouts)
         } else if (config.action === 'get') {
           msg.payload = await browser.getTimeouts()
         }

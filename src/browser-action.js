@@ -13,6 +13,7 @@ module.exports = function(RED) {
         let url = config.url || msg.url
         let height = config.height || msg.height
         let width = config.width || msg.width
+        let keys = config.keysArr || msg.keysArr
 
         if (config.action === 'getUrl') {
           msg.payload = await browser.getUrl()
@@ -36,6 +37,12 @@ module.exports = function(RED) {
           msg.payload = await browser.getPageSource()
         } else if (config.action === 'getCookies') {
           msg.payload = await browser.getAllCookies()
+        } else if (config.action === 'print') {
+          await browser.execute('setTimeout(()=> {window.print()}, 2000)')
+        } else if (config.action === 'keyStorkes') {
+          let arr = keys.split(',')
+          let keyValues = arr.map((item) => item.trim())
+          await browser.keys(Array.from(keyValues))
         }
         common.successStatus(node)
         node.send(msg)

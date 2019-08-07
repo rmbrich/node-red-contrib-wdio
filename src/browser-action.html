@@ -4,12 +4,16 @@
     $('#actionURL').hide()
     $('#actionWidth').hide()
     $('#actionHeight').hide()
+    $('#actionValue').hide()
     if (action === 'setSize') {
       $('#actionWidth').show()
       $('#actionHeight').show()
     }
     if (action === 'navigateTo') {
       $('#actionURL').show()
+    }
+    if (action === 'keyStorkes') {
+      $('#actionValue').show()
     }
   }
 
@@ -21,7 +25,8 @@
       action: { value: 'navigateTo' },
       url: { value: '' },
       width: { value: '' },
-      height: { value: '' }
+      height: { value: '' },
+      keysArr: { value: '' }
     },
     inputs: 1,
     outputs: 1,
@@ -49,6 +54,8 @@
           <option value="maximize">Maximize Window</option>
           <option value="takeScreenShot">Screenshot</option>
           <option value="pageSource">Get Page Source</option>
+          <option value="print">Print</option>
+          <option value="keyStorkes">Key Strokes</option>
           <option value="getCookies">Get All Cookies</option>
       </select>
   </div>
@@ -63,6 +70,10 @@
   <div class="form-row" id="actionHeight">
       <label for="node-input-height"><i class="fa fa-tasks"></i>Height</label>
       <input id="node-input-height" type="text">
+  </div>
+  <div class="form-row" id="actionValue">
+    <label for="node-input-keysArr"><i class="fa fa-tasks"></i> Key Values</label>
+    <input id="node-input-keysArr" type="text">
   </div>
   <div class="form-row">
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
@@ -85,6 +96,10 @@
           <dt>height: <span class="property-type">string</span></dt>
           <dd>Browser window will be adjusted to specified height.</dd>
           <dd>Can be parameterized using <code>msg.height</code>, by leaving the Height empty on node configuration.</dd>
+          <dt>Key Values: <span class="property-type">string</span></dt>
+          <dd>See the list of values as keys. click <a href="https://w3c.github.io/webdriver/#keyboard-actions">here</a>.</dd>
+          <dd>A string with , separated key values, which will be converted to an array of strings.</dd>
+          <dd>Can be parameterized using <code>msg.keysArr</code>, by leaving the Key Values empty on node configuration.</dd>
       </dl>
 
   <h3>Outputs</h3>
@@ -96,5 +111,4 @@
           <dd><b>Get Page Source</b> returns entire page source of the document<br></dd>
           <dd><b>Get All Cookies</b> returns all cookies stored at the moment inside of an Object<br></dd>
       </dl>
-
 </script>

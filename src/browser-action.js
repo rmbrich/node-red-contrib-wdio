@@ -39,7 +39,7 @@ module.exports = function(RED) {
           msg.payload = await browser.getAllCookies()
         } else if (config.action === 'print') {
           await browser.execute('setTimeout(()=> {window.print()}, 2000)')
-        } else if (config.action === 'keyStorkes') {
+        } else if (config.action === 'keyStrokes') {
           let arr = keys.split(',')
           let keyValues = arr.map((item) => item.trim())
           await browser.keys(Array.from(keyValues))

@@ -63,7 +63,6 @@
   </div>
 </script>
 
-
 <script type="text/x-red" data-help-name="new-session">
   <h3>Creates new session and also sets the "wdio_browser" global variable to the new session object.</h3>
   <h3>Inputs</h3>
@@ -72,8 +71,10 @@
           <dd>Webdriver server name.</dd>
           <dt>webdriverUri: <span class="property-type">string</span></dt>
           <dd>The string format should be <protocal>://<hotsname>:<port number>/<path>, user 80/8080/443 if it is service based webdriver provider.</dd>
+          <dd><code>msg.webdriverUri</code> can be used by leaving the webdriverUri field blank.</dd>
           <dt>Browser: <span class="property-type">string</span></dt>
           <dd>Current configurations are only for chrome.</dd>
+          <dd><code>msg.webdriverBrowser</code> can be used by leaving the webdriverBrowser blank.</dd>
           <dt>logLevel: <span class="property-type">string</span></dt>
           <dd>Select the log level to display the logs on console during run.</dd>
           <dt>killSession: <span class="property-type">Bool</span></dt>

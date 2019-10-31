@@ -5,15 +5,19 @@ module.exports = function(RED) {
     RED.nodes.createNode(this, config)
     const node = this
 
-    const webdriverConfig = Object.assign(
-      { logLevel: config.logLevel },
-      parseUri(config.webdriverUri, node),
-      getCapabilities(config.webdriverProvider, config.webdriverBrowser)
-    )
     common.clearStatus(node)
 
     node.on('input', async (msg) => {
       try {
+        const webdriverConfig = Object.assign(
+          { logLevel: config.logLevel || msg.logLevel },
+          parseUri(config.webdriverUri || msg.webdriverUri, node),
+          getCapabilities(
+            config.webdriverProvider,
+            config.webdriverBrowser || msg.webdriverBrowser
+          )
+        )
+
         let b = await common.newSession(webdriverConfig, node, node.context())
         common.connectedStatus(node)
         msg.payload = b.sessionId

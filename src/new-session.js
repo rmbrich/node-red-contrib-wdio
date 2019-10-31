@@ -10,7 +10,7 @@ module.exports = function(RED) {
     node.on('input', async (msg) => {
       try {
         const webdriverConfig = Object.assign(
-          { logLevel: config.logLevel || msg.logLevel },
+          { logLevel: config.logLevel },
           parseUri(config.webdriverUri || msg.webdriverUri, node),
           getCapabilities(
             config.webdriverProvider,

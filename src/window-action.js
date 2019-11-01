@@ -19,7 +19,7 @@ module.exports = function(RED) {
           let handles = await browser.getWindowHandles()
           await browser.switchWindow(handles[index])
         } else if (config.action === 'getHandle') {
-          await browser.getWindowHandle()
+          msg.payload = await browser.getWindowHandles()
         } else if (config.action === 'close') {
           await browser.closeWindow()
         } else if (config.action === 'open') {

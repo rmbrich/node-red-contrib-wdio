@@ -26,7 +26,7 @@ module.exports = function(RED) {
         } else if (config.action === 'clear') {
           await browser.elementClear(elementId)
         } else if (config.action === 'sendKeys') {
-          await browser.elementSendKeys(elementId, Array.from(value))
+          await browser.elementSendKeys(elementId, value)
         } else if (config.action === 'getValue') {
           msg.payload = await browser.getElementAttribute(elementId, 'value')
         } else if (config.action === 'getText') {

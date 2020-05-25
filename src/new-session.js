@@ -14,7 +14,8 @@ module.exports = function(RED) {
           parseUri(config.webdriverUri || msg.webdriverUri, node),
           getCapabilities(
             config.webdriverProvider,
-            config.webdriverBrowser || msg.webdriverBrowser
+            config.webdriverBrowser || msg.webdriverBrowser,
+            config.browserlessToken
           )
         )
 
@@ -74,7 +75,7 @@ const getCapabilities = (vendor, browser) => {
   if (vendor === 'browserless.io') {
     capabilities = {
       browserName: browser,
-      chromeOptions: {
+      'goog:chromeOptions': {
         args: ['--headless', '--no-sandbox']
       }
     }

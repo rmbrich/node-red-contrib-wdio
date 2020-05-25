@@ -53,8 +53,8 @@ module.exports.getElementId = async (browser, using, value) => {
   let elementId
   try {
     const element = await browser.findElement(using, value)
-    if (element && element.ELEMENT) {
-      elementId = element.ELEMENT
+    if (element && Object.keys(element)) {
+      elementId = element[Object.keys(element)[0]]
     } else {
       let e
       if (element && element.message) {

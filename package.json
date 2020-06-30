@@ -28,7 +28,8 @@
     }
   },
   "dependencies": {
-    "webdriverio": "^5.7.15"
+    "@wdio/cli": "^6.1.22",
+    "webdriverio": "^6.1.22"
   },
   "devDependencies": {
     "@wdio/allure-reporter": "^5.7.11",

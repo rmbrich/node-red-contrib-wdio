@@ -19,7 +19,8 @@
       locateUsing: { value: 'xpath' },
       locateValue: { value: '' },
       action: { value: 'click' },
-      sendKeys: { value: '' },
+      sendKeys: { value: 'payload' },
+      object: { value: 'msg' },
       attribute: { value: '' }
     },
     inputs: 1,
@@ -30,6 +31,11 @@
     },
     oneditprepare: function() {
       setAction()
+      $('#node-input-sendKeys').typedInput({
+        default: 'msg',
+        typeField: $('#node-input-object'),
+        types: ['msg', 'flow', 'global', 'str']
+      })
     }
   })
 </script>
@@ -67,7 +73,8 @@
   </div>
   <div class="form-row" id="actionSendKeys">
       <label for="node-input-sendKeys"><i class="fa fa-tasks"></i> Text to Send</label>
-      <input id="node-input-sendKeys" type="text">
+      <input type="text" id="node-input-sendKeys" style="width:70%">
+      <input type="hidden" id="node-input-object">
   </div>
   <div class="form-row" id="getAttribute">
       <label for="node-input-attribute"><i class="fa fa-tasks"></i>Attribute Name</label>

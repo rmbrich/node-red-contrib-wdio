@@ -51,14 +51,18 @@ module.exports = function(RED) {
           locateValue
         )
 
-        let value = await getTypeInputValue(msg, config.object, config.sendKeys)
         let attribute = config.attribute || msg.attribute
 
         if (config.action === 'click') {
           await browser.elementClick(elementId)
         } else if (config.action === 'clear') {
           await browser.elementClear(elementId)
-        } else if (config.action === 'sendKeys' && value) {
+        } else if (config.action === 'sendKeys') {
+          let value = await getTypeInputValue(
+            msg,
+            config.object,
+            config.sendKeys
+          )
           await browser.elementSendKeys(elementId, Array.from(value))
         } else if (config.action === 'getValue') {
           msg.payload = await browser.getElementAttribute(elementId, 'value')

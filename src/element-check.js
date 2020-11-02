@@ -12,19 +12,24 @@ module.exports = function(RED) {
         let locateValue = config.locateValue || msg.locateValue
 
         let browser = await common.getBrowser(node.context())
-        let elementId = await common.getElementId(
-          browser,
-          locateUsing,
-          locateValue
-        )
-
-        if (config.check === 'selected') {
-          msg.payload = await browser.isElementSelected(elementId)
-        } else if (config.check === 'enabled') {
-          msg.payload = await browser.isElementEnabled(elementId)
-        } else if (config.check === 'displayed') {
-          msg.payload = await browser.isElementDisplayed(elementId)
+        try {
+          let elementId = await common.getElementId(
+            browser,
+            locateUsing,
+            locateValue
+          )
+              
+          if (config.check === 'selected') {
+            msg.payload = await browser.isElementSelected(elementId)
+          } else if (config.check === 'enabled') {
+            msg.payload = await browser.isElementEnabled(elementId)
+          } else if (config.check === 'displayed') {
+            msg.payload = await browser.isElementDisplayed(elementId)
+          }
         }
+       catch (error) {
+        msg.payload = false
+      }
         common.successStatus(node)
         node.send(msg)
       } catch (e) {

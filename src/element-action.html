@@ -19,8 +19,8 @@
       locateUsing: { value: 'xpath' },
       locateValue: { value: '' },
       action: { value: 'click' },
-      sendKeys: { value: 'payload' },
-      object: { value: 'msg' },
+      sendKeys: { value: '', validate: RED.validators.typedInput('object') },
+      object: { value: 'val' },
       attribute: { value: '' }
     },
     inputs: 1,

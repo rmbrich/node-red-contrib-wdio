@@ -45,21 +45,29 @@ module.exports = function(RED) {
         let locateValue = config.locateValue || msg.locateValue
 
         let browser = await common.getBrowser(context)
+        let capabilities = browser.capabilities
         let elementId = await common.getElementId(
           browser,
           locateUsing,
           locateValue
         )
 
-        let value = await getTypeInputValue(msg, config.object, config.sendKeys)
         let attribute = config.attribute || msg.attribute
 
         if (config.action === 'click') {
           await browser.elementClick(elementId)
         } else if (config.action === 'clear') {
           await browser.elementClear(elementId)
-        } else if (config.action === 'sendKeys' && value) {
-          await browser.elementSendKeys(elementId, Array.from(value))
+        } else if (config.action === 'sendKeys') {
+          let value = await getTypeInputValue(
+            msg,
+            config.object,
+            config.sendKeys
+          )
+          await browser.elementSendKeys(
+            elementId,
+            capabilities.version ? Array.from(value) : value
+          )
         } else if (config.action === 'getValue') {
           msg.payload = await browser.getElementAttribute(elementId, 'value')
         } else if (config.action === 'getText') {

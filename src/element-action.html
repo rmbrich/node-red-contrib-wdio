@@ -19,8 +19,11 @@
       locateUsing: { value: 'xpath' },
       locateValue: { value: '' },
       action: { value: 'click' },
-      sendKeys: { value: 'payload' },
-      object: { value: 'msg' },
+      sendKeys: {
+        value: 'payload',
+        validate: RED.validators.typedInput('object')
+      },
+      object: { value: 'val' },
       attribute: { value: '' }
     },
     inputs: 1,
@@ -32,7 +35,7 @@
     oneditprepare: function() {
       setAction()
       $('#node-input-sendKeys').typedInput({
-        default: 'msg',
+        default: 'str',
         typeField: $('#node-input-object'),
         types: ['msg', 'flow', 'global', 'str']
       })

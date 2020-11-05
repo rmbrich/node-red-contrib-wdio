@@ -20,21 +20,7 @@
     "onceDelay": 0.1,
     "x": 100,
     "y": 60,
-    "wires": [["7f832ceb.d8f4c4"]]
-  },
-  {
-    "id": "7f832ceb.d8f4c4",
-    "type": "new-session",
-    "z": "b333aac5.8be6a8",
-    "name": "",
-    "webdriverUri": "https://your-api-key@chrome.browserless.io:443/webdriver",
-    "webdriverProvider": "browserless.io",
-    "webdriverBrowser": "chrome",
-    "logLevel": "error",
-    "killSession": false,
-    "x": 250,
-    "y": 180,
-    "wires": [["a5053d5f.b6a638"]]
+    "wires": [["2017a5a9.9aa3da"]]
   },
   {
     "id": "e95ea90a.a813d8",
@@ -84,20 +70,6 @@
     "x": 400,
     "y": 580,
     "wires": []
-  },
-  {
-    "id": "acc33cf3.f21a",
-    "type": "element-action",
-    "z": "b333aac5.8be6a8",
-    "name": "send keys",
-    "locateUsing": "css selector",
-    "locateValue": "#search_form_input_homepage",
-    "action": "sendKeys",
-    "sendKeys": "hi",
-    "attribute": "",
-    "x": 240,
-    "y": 340,
-    "wires": [["5f57519b.33bc9"]]
   },
   {
     "id": "54afd8dd.3df5a8",
@@ -153,7 +125,7 @@
     "keysArr": "",
     "x": 234.5,
     "y": 260,
-    "wires": [["e95ea90a.a813d8", "acc33cf3.f21a"]]
+    "wires": [["e95ea90a.a813d8", "1e414894.80c9f7"]]
   },
   {
     "id": "6a3b88d8.2791a",
@@ -168,5 +140,33 @@
     "x": 570.5,
     "y": 339,
     "wires": [["54afd8dd.3df5a8", "b670d9f3.134eb8"]]
+  },
+  {
+    "id": "1e414894.80c9f7",
+    "type": "element-action",
+    "z": "b333aac5.8be6a8",
+    "name": "send keys",
+    "locateUsing": "css selector",
+    "locateValue": "#search_form_input_homepage",
+    "action": "sendKeys",
+    "sendKeys": "hi",
+    "object": "str",
+    "attribute": "",
+    "x": 233,
+    "y": 340,
+    "wires": [["5f57519b.33bc9"]]
+  },
+  {
+    "id": "2017a5a9.9aa3da",
+    "type": "new-session",
+    "z": "b333aac5.8be6a8",
+    "name": "",
+    "webdriverUri": "",
+    "webdriverProvider": "",
+    "webdriverBrowser": "",
+    "logLevel": "error",
+    "x": 238,
+    "y": 181,
+    "wires": [["a5053d5f.b6a638"]]
   }
 ]

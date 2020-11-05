@@ -45,6 +45,7 @@ module.exports = function(RED) {
         let locateValue = config.locateValue || msg.locateValue
 
         let browser = await common.getBrowser(context)
+        let capabilities = browser.capabilities
         let elementId = await common.getElementId(
           browser,
           locateUsing,
@@ -63,7 +64,10 @@ module.exports = function(RED) {
             config.object,
             config.sendKeys
           )
-          await browser.elementSendKeys(elementId, Array.from(value))
+          await browser.elementSendKeys(
+            elementId,
+            capabilities.version ? Array.from(value) : value
+          )
         } else if (config.action === 'getValue') {
           msg.payload = await browser.getElementAttribute(elementId, 'value')
         } else if (config.action === 'getText') {

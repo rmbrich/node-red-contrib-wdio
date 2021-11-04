@@ -90,7 +90,7 @@ const getCapabilities = (vendor, browser) => {
   } else if (vendor === 'local') {
     capabilities = {
       browserName: browser,
-      platformName: 'Linux',
+      //platformName: 'Linux',
       'goog:chromeOptions': {
         w3c: false
       }

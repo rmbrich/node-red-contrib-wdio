@@ -30,7 +30,7 @@
     inputs: 1,
     outputs: 1,
     icon: 'white-globe.png',
-    label: function() {
+    label: function () {
       return this.name || 'new session'
     }
   })
@@ -49,11 +49,13 @@
       <input id="node-input-webdriverUri" type="text" placeholder="https://host:port/path">
   </div>
   <div class="form-row" id="row-browser">
-      <label for="node-input-webdriverBrowser"><i class="fa fa-globe"></i> Browser</label>
-      <select type="text" id="node-input-webdriverBrowser" style="width:70%;">
-          <option value="chrome" selected>Chrome</option>
-          <option value="chromium">Chromium</option>
-      </select>
+    <label for="node-input-webdriverBrowser"><i class="fa fa-globe"></i> Browser</label>
+    <select type="text" id="node-input-webdriverBrowser" style="width:70%;">
+        <option value="chrome" selected>Chrome</option>
+        <option value="chromium">Chromium</option>
+        <option value="firefox">Firefox</option>
+        <option value="MicrosoftEdge">MicrosoftEdge</option>
+    </select>
   </div>
   <div class="form-row">
       <label for="node-input-logLevel"><i class="fa fa-tasks"></i> Log Level</label>

@@ -87,6 +87,17 @@ const getCapabilities = (vendor, browser) => {
         w3c: false
       }
     }
+  } else if (vendor === 'local' && browser === 'firefox') {
+    capabilities = {
+      browserName: 'firefox'
+    }
+  } else if (vendor === 'local' && browser === 'MicrosoftEdge') {
+    capabilities = {
+      browserName: 'MicrosoftEdge',
+      'ms:edgeOptions': {
+        args: ['--remote-allow-origins=*']
+      }
+    }
   } else if (vendor === 'local') {
     capabilities = {
       browserName: browser,

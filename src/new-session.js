@@ -84,7 +84,7 @@ const getCapabilities = (vendor, browser) => {
       browserName: 'chrome',
       'goog:chromeOptions': {
         args: ['--headless', '--no-sandbox'],
-        w3c: false
+        //w3c: false
       }
     }
   } else if (vendor === 'local' && browser === 'firefox') {
